@@ -26,7 +26,7 @@ class RegisterView(APIView):
                 'access': str(refresh.access_token),
                 'user_id': user.id,
                 'username': user.username,
-                'photo': user_profile.photo.url,
+                'photos': user_profile.photo.url,
                 'profile': user_profile.profile
             })
             # 将refresh也存到浏览器的cookie中，如果发现access过期，那么就调用特殊请求带上refresh发放新的access

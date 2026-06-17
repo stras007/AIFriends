@@ -1,0 +1,66 @@
+<script setup>
+import {useUserStore} from "@/stores/user.js";
+import UserSpaceIcon from "@/components/icon/UserSpaceIcon.vue";
+import UserLogoutIcon from "@/components/icon/UserLogoutIcon.vue";
+import UserProfileIcon from "@/components/icon/UserProfileIcon.vue";
+
+const user = useUserStore()
+
+function closeMenu() {
+  const element = document.activeElement
+  if (element && element instanceof HTMLElement) element.blur()
+}
+</script>
+
+<template>
+  <div class="dropdown dropdown-end">
+    <div tabindex="0" role="button" class="avatar btn btn-circle w-8 h-8 mr-6">
+        <div class="w-10 rounded-full">
+          <img :src="user.photo" alt="User Avatar" />
+        </div>
+    </div>
+    <ul tabindex="-1" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-lg">
+      <li>
+        <RouterLink :to="{name: 'user-space-index', params: {user_id: user.id}}">
+          <div class ="avatar">
+            <div class="w-10 rounded-full">
+              <img :src="user.photo" alt="" />
+            </div>
+          </div>
+          <span class="text-gray-400 flex-shrink-0">|</span>
+          <span class="text-base font-bold truncate max-w-30">{{user.username}}</span>
+        </RouterLink>
+      </li>
+      <li>
+        <RouterLink @click="closeMenu" :to="{name: 'user-space-index', params: {user_id: user.id}}" class="text-sm font-bold py-2" >
+          <UserSpaceIcon/>
+          我的空间
+        </RouterLink>
+      </li>
+      <li></li>
+      <li>
+        <RouterLink @click="closeMenu" :to="{name: 'user-profile-index', params: {user_id: user.id}}" class="text-sm font-bold py-2" >
+          <UserProfileIcon/>
+          编辑资料
+        </RouterLink>
+      </li>
+      <li></li>
+      <li>
+        <a class="text-sm font-bold py-2">
+          <UserLogoutIcon/>
+          退出登录
+        </a>
+
+
+      </li>
+
+
+
+
+    </ul>
+  </div>
+</template>
+
+<style scoped>
+
+</style>
