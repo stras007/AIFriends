@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from web.models.user import UserProfile
+
 
 class RegisterView(APIView):
     def post(self, request):
@@ -11,7 +13,7 @@ class RegisterView(APIView):
             password = request.data['password'].strip()
             if not username or not password:
                 return Response ({
-                    'result' : "用户名和密码不能为空"
+                    'result': "用户名和密码不能为空"
                 })
             if User.objects.filter(username=username).exists():
                 return Response({
@@ -19,14 +21,14 @@ class RegisterView(APIView):
                 })
 
             user = User.objects.create_user(username=username, password=password)
-            user_profile = User.objects.create(user=user)
+            user_profile = UserProfile.objects.create(user=user)
             refresh = RefreshToken.for_user(user)
             response = Response({
                 'result': 'success',
                 'access': str(refresh.access_token),
                 'user_id': user.id,
                 'username': user.username,
-                'photos': user_profile.photo.url,
+                'photo': user_profile.photo.url,
                 'profile': user_profile.profile
             })
             # 将refresh也存到浏览器的cookie中，如果发现access过期，那么就调用特殊请求带上refresh发放新的access

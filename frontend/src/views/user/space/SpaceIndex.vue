@@ -5,7 +5,7 @@ const route = useRoute()
 </script>
 
 <template>
-个人空间:{{route.params.userid}}
+个人空间:{{route.params.user_id}}
 </template>
 
 <style scoped>
