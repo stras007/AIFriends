@@ -40,7 +40,7 @@ async function handleLogout() {
           <img :src="user.photo" alt="User Avatar" />
         </div>
     </div>
-    <ul tabindex="-1" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-lg">
+    <ul tabindex="-1" class="dropdown-content menu bg-base-100 rounded-box z-1 w-36 p-2 shadow-lg">
       <li>
         <RouterLink :to="{name: 'user-space-index', params: {user_id: user.id}}">
           <div class ="avatar">
@@ -49,7 +49,7 @@ async function handleLogout() {
             </div>
           </div>
           <span class="text-gray-400 flex-shrink-0">|</span>
-          <span class="text-base font-bold truncate max-w-30">{{user.username}}</span>
+          <span class="text-base font-bold truncate max-w-12">{{ user.username }}</span>
         </RouterLink>
       </li>
       <li>
