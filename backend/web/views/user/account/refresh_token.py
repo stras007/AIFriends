@@ -1,6 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.conf import settings
+
 
 class RefreshTokenView(APIView):
     def post(self, request):
@@ -10,7 +12,7 @@ class RefreshTokenView(APIView):
                 return Response({'result': '未找到刷新令牌，请重新登录'}, status=401)
 
             refresh = RefreshToken(refresh_token)
-            if sttings.SIMPLE_JWT['ROTATE_REFRESH_TOKENS']:
+            if settings.SIMPLE_JWT['ROTATE_REFRESH_TOKENS']:
                 refresh.set_jti()
                 response = Response({
                     'result': 'success',
