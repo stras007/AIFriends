@@ -8,6 +8,7 @@ import LoginIndex from "@/views/user/account/LoginIndex.vue";
 import RegisterIndex from "@/views/user/account/RegisterIndex.vue";
 import SpaceIndex from "@/views/user/space/SpaceIndex.vue";
 import {useUserStore} from "@/stores/user.js";
+import ProfileIndex from "@/views/user/profile/ProfileIndex.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -70,7 +71,7 @@ const router = createRouter({
     },
     {
       path: '/user/profile/',
-      component: RegisterIndex,
+      component: ProfileIndex,
       name: 'user-profile-index',
       meta: {
         needLogin: true,
