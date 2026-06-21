@@ -55,8 +55,8 @@ async function handleCreate() {
       } else {
         errorMessage.value = data.result
       }
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+
     }
   }
 }
