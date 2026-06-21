@@ -32,6 +32,7 @@ async function loadMore() {
       }
     })
     const data = res.data
+    console.log(data)
     if (data.result === 'success') {
       userProfile.value = data.user_profile
       newCharacters = data.characters
@@ -90,7 +91,7 @@ onBeforeUnmount(() => {
         @remove="removeCharacter"
       />
     </div>
-    <div ref="sentinel-ref" class="h-1 mt-8 w-150 bg-black/10"></div>
+    <div ref="sentinel-ref" class="h-1 mt-10 w-800 bg-black/5"></div>
     <div v-if="isLoading" class="text-gray-500 mt-4">加载中...</div>
     <div v-else-if="!hasCharacters" class="text-gray-500 mt-4">没有更多角色了</div>
   </div>
