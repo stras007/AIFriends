@@ -96,7 +96,7 @@ onBeforeUnmount(() => {
 <template>
   <div class="flex flex-col items-center mb-12">
     <UserInfoField :userProfile="userProfile" />
-    <div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-9 mt-12 justify-items-center w-full px-9">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-9 mt-12 justify-items-center w-full px-3">
       <Character
         v-for="character in characters"
         :key="character.id"
@@ -112,5 +112,14 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+/* 在现有样式中添加 */
+:deep(.flex.flex-col) {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
 
+/* 或者直接隐藏所有水平滚动 */
+* {
+  overflow-x: hidden !important;
+}
 </style>

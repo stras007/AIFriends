@@ -100,5 +100,14 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
+/* 在现有样式中添加 */
+:deep(.flex.flex-col) {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
 
+/* 或者直接隐藏所有水平滚动 */
+* {
+  overflow-x: hidden !important;
+}
 </style>
