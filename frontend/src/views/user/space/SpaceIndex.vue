@@ -37,7 +37,7 @@ async function loadMore() {
       userProfile.value = data.user_profile
       newCharacters = data.characters
     }
-  } catch (err) {
+  } catch (error) {
   } finally {
     isLoading.value = false
     if (newCharacters.length === 0) {
